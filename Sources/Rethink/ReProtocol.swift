@@ -37,13 +37,13 @@ public enum ReProtocolVersion {
 }
 
 /** Protocol constants. */
-internal class ReProtocol {
+public class ReProtocol {
 	static let defaultPort = 28015
 
 	static let protocolType: UInt32 = 0x7e6970c7 // JSON
 	static let handshakeSuccessResponse = "SUCCESS"
-	static let defaultUser = "admin"
-	static let defaultPassword = ""
+	public static let defaultUser = "admin"
+	public static let defaultPassword = ""
 
 	static let responseTypeSuccessAtom = 1
 	static let responseTypeSuccessSequence = 2

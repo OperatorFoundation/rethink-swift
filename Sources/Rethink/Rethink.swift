@@ -575,7 +575,7 @@ public enum ReTypeName: String {
 public extension ReQuery {
 	typealias Callback = (ReResponse) -> ()
 
-	public func run(_ connection: ReConnection, callback: @escaping Callback) {
+	func run(_ connection: ReConnection, callback: @escaping Callback) {
 		let query: [Any] = [ReProtocol.ReQueryType.start.rawValue, self.jsonSerialization];
 
 		do {
@@ -589,19 +589,19 @@ public extension ReQuery {
 		}
 	}
 
-	public func typeOf() -> ReQueryValue {
+	func typeOf() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.type_of.rawValue, [self.jsonSerialization]])
 	}
 
-	public func coerceTo(_ type: ReTypeName) -> ReQueryValue {
+	func coerceTo(_ type: ReTypeName) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.coerce_to.rawValue, [self.jsonSerialization, type.rawValue]])
 	}
 
-	public func coerceTo(_ type: ReQueryValue) -> ReQueryValue {
+	func coerceTo(_ type: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.coerce_to.rawValue, [self.jsonSerialization, type.jsonSerialization]])
 	}
 
-	public func info() -> ReQueryValue {
+    func info() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.info.rawValue, [self.jsonSerialization]])
 	}
 }
@@ -623,123 +623,123 @@ extension Bool: ReQueryValue {
 }
 
 public extension ReQueryValue {
-	public func add(_ value: ReQueryValue) -> ReQueryValue {
+    func add(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.add.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func sub(_ value: ReQueryValue) -> ReQueryValue {
+    func sub(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.sub.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func mul(_ value: ReQueryValue) -> ReQueryValue {
+    func mul(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.mul.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func div(_ value: ReQueryValue) -> ReQueryValue {
+    func div(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.div.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func mod(_ value: ReQueryValue) -> ReQueryValue {
+    func mod(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.mod.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func and(_ value: ReQueryValue) -> ReQueryValue {
+    func and(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.and.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func or(_ value: ReQueryValue) -> ReQueryValue {
+    func or(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.or.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func eq(_ value: ReQueryValue) -> ReQueryValue {
+    func eq(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.eq.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func ne(_ value: ReQueryValue) -> ReQueryValue {
+    func ne(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.ne.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func gt(_ value: ReQueryValue) -> ReQueryValue {
+    func gt(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.gt.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func ge(_ value: ReQueryValue) -> ReQueryValue {
+	func ge(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.ge.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func lt(_ value: ReQueryValue) -> ReQueryValue {
+	func lt(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.lt.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func le(_ value: ReQueryValue) -> ReQueryValue {
+	func le(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.le.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func not() -> ReQueryValue {
+	func not() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.not.rawValue, [self.jsonSerialization]])
 	}
 
-	public func round() -> ReQueryValue {
+	func round() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.round.rawValue, [self.jsonSerialization]])
 	}
 
-	public func ceil() -> ReQueryValue {
+	func ceil() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.ceil.rawValue, [self.jsonSerialization]])
 	}
 
-	public func floor() -> ReQueryValue {
+	func floor() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.floor.rawValue, [self.jsonSerialization]])
 	}
 
-	public func toEpochTime() -> ReQueryValue {
+	func toEpochTime() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.to_epoch_time.rawValue, [self.jsonSerialization]])
 	}
 
-	public func defaults(_ value: ReQueryValue) -> ReQueryValue {
+	func defaults(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.default.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func match(_ value: ReQueryValue) -> ReQueryValue {
+    func match(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.match.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func toJSON() -> ReQueryValue {
+    func toJSON() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.to_json_string.rawValue, [self.jsonSerialization]])
 	}
 
-	public func toJsonString() -> ReQueryValue {
+    func toJsonString() -> ReQueryValue {
 		return self.toJSON()
 	}
 
-	public func upcase() -> ReQueryValue {
+    func upcase() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.upcase.rawValue, [self.jsonSerialization]])
 	}
 
-	public func downcase() -> ReQueryValue {
+    func downcase() -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.downcase.rawValue, [self.jsonSerialization]])
 	}
 
-	public func xor(_ other: ReQueryValue) -> ReQueryValue {
+    func xor(_ other: ReQueryValue) -> ReQueryValue {
 		return self.and(other.not()).or(self.not().and(other))
 	}
 
-	public func merge(_ value: ReQueryValue) -> ReQueryValue {
+    func merge(_ value: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.merge.rawValue, [self.jsonSerialization, value.jsonSerialization]])
 	}
 
-	public func branch(_ ifTrue: ReQueryValue, _ ifFalse: ReQueryValue) -> ReQueryValue {
+    func branch(_ ifTrue: ReQueryValue, _ ifFalse: ReQueryValue) -> ReQueryValue {
 		return R.branch(self, ifTrue: ifTrue, ifFalse: ifFalse)
 	}
 
-	public subscript(key: String) -> ReQueryValue {
+    subscript(key: String) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.bracket.rawValue, [self.jsonSerialization, key]])
 	}
 
-	public subscript(key: ReQueryValue) -> ReQueryValue {
+    subscript(key: ReQueryValue) -> ReQueryValue {
 		return ReDatum(jsonSerialization: [ReTerm.bracket.rawValue, [self.jsonSerialization, key.jsonSerialization]])
 	}
 
-	public func without(fields: [ReQueryValue]) -> ReQuerySequence {
+    func without(fields: [ReQueryValue]) -> ReQuerySequence {
 		let values = fields.map({ e in return e.jsonSerialization })
 		return ReQuerySequence(jsonSerialization: [ReTerm.without.rawValue, [self.jsonSerialization, [ReTerm.make_array.rawValue, values]]])
 	}

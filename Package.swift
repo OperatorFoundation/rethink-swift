@@ -1,10 +1,16 @@
+// swift-tools-version:5.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
 let package = Package(
 	name: "Rethink",
+    products: [
+    // Products define the executables and libraries produced by a package, and make them visible to other packages.
+    .library(name: "Rethink", targets: ["Rethink"]),
+    ],
 	targets: [
-		Target(name: "Rethink", dependencies: ["GCDAsyncSocket", "SCRAM"]),
-		Target(name: "GCDAsyncSocket"),
-		Target(name: "SCRAM")
+        .target(name: "Rethink", dependencies: ["GCDAsyncSocket", "SCRAM"]),
+        .target(name: "GCDAsyncSocket"),
+        .target(name: "SCRAM")
 	]
 )
